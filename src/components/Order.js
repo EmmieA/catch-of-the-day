@@ -19,7 +19,7 @@ class Order extends React.Component {
 
     return <li key={orderFishId}>
         {howManyBought} lbs {fish.name} 
-        {formatPrice(howManyBought * fish.price)}
+        &nbsp;{formatPrice(howManyBought * fish.price)}
       </li>
   }
 

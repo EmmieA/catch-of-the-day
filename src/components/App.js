@@ -17,8 +17,23 @@ class App extends React.Component {
   // once we involved firebase, we started playing with the lifecycle methods
   componentDidMount() {
     const { params } = this.props.match;
-    this.ref = base.syncState(`${params.storeId}/fishes`);
+    // store a reference to the database here so that when we unmount (user hits Back button)
+    // or something similar, we can remove all bindings in componentWillUnmount()
+    this.ref = base.syncState(`${params.storeId}/fishes`, {
+      context: this,
+      state: 'fishes'
+    });
   }
+  
+  componentDidUpdate() {
+    // we want to store the user's order in local storage
+    localStorage
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
+
 
   // state and how it gets populated live in the same component
   // This function has to be accessed 2 levels deeper in the createFishForm component so how 
