@@ -1,0 +1,8 @@
+# Dependency directories
+node_modules/
+
+# Project
+dist/
+
+# Editor
+.vscode
